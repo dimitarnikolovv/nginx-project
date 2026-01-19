@@ -1,0 +1,18 @@
+services:
+    web:
+        image: nginx:alpine
+        container_name: nginx_http_server
+        ports:
+            - '8080:80'
+        volumes:
+            - ./html:/usr/share/nginx/html:ro
+            - ./nginx:/etc/nginx/conf.d:ro
+        depends_on:
+            - api
+        restart: unless-stopped
+
+    api:
+        image: hashicorp/http-echo:1.0
+        container_name: demo_api
+        command: ['-listen=:5678', '-text=Hello from API behind Nginx']
+        restart: unless-stopped
