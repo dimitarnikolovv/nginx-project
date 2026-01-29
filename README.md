@@ -153,10 +153,10 @@ View logs:
 
 ```bash
 # All logs
-docker-compose logs -f
+docker compose logs -f
 
 # Nginx logs only
-docker-compose logs -f web
+docker compose logs -f web
 
 # Access Nginx access logs
 docker exec nginx_http_server cat /var/log/nginx/access.log
